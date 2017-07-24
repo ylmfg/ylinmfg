@@ -139,7 +139,7 @@ return [
         // 标签库标签结束标记
         'taglib_end'   => '}',
     ],
-    'test'=>'测试',
+    'ceshi'=>'测试',
     // 视图输出字符串内容替换
     'view_replace_str'       => [
         '__CSS__'=>'/css',
