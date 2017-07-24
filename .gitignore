@@ -2,5 +2,5 @@
 composer.lock
 *.log
 thinkphp
-/application/database.php
 /application/config.php
+/application/database.php
