@@ -1,6 +1,8 @@
 <?php
 namespace app\index\controller;
-class Index
+use think\Controller;
+
+class Index extends Controller
 {
     /***
      * @return \think\response\View

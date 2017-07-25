@@ -10,3 +10,9 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+//获取session_id
+function getSessionId(){
+    $user_id=session('user_id')?:0;
+    //以后这里需要查询数据库
+    return $user_id;
+}
