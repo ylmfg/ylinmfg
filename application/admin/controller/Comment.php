@@ -6,10 +6,10 @@
  * Time: 9:42
  */
 namespace app\admin\controller;
-class Project extends Base
+class Comment extends Base
 {
     /***
-     * 项目首页
+     * 评论首页
      * @return \think\response\View
      */
     public function index()
@@ -18,23 +18,19 @@ class Project extends Base
     }
 
     /*
-     *项目添加
+     * 评论详情
      */
-    public function add()
+    public function detail()
     {
-        return view();
+
     }
 
-    /**
-     * 项目分类
+    /*
+     *评论删除
      */
-    public function category()
+    public function del()
     {
         return view();
-    }
-
-    public function cateList(){
-        return view('cateList');
     }
 
 }
