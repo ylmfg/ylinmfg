@@ -36,7 +36,7 @@ class Index extends Base
         $this->success('退出成功', url('admin/index/index'));
     }
 
-    public function single()
+    public function setting()
     {
 
     }
