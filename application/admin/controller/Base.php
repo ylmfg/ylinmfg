@@ -18,7 +18,7 @@ class Base extends Controller
         //判断用户是否登陆
         $user_id=getSessionId();
         if(!$user_id){
-            $this->error('请先登陆',url('admin/index/index'));
+            $this->error('请先登陆',url('admin/index/index'),1);
         }
     }
 

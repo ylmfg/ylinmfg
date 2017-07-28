@@ -31,12 +31,12 @@ class Index extends Base
             //获取表单提交数据
             $data = input();
             session('user_id', 1);
-            $this->success('登陆成功', url('admin/index/admin'));
+            $this->success('登陆成功', url('admin/index/admin'),'',1);
         } else {
             if(!session('user_id')){
                 return view('login');
             }else{
-                $this->success('你已登陆',url('admin/index/admin'));
+                $this->success('你已登陆',url('admin/index/admin'),'',1);
             }
         }
     }
@@ -47,7 +47,7 @@ class Index extends Base
     public function login_out()
     {
         session(null);
-        $this->success('退出成功', url('admin/index/index'));
+        $this->success('退出成功', url('admin/index/index'),'',1);
     }
 
     /**管理设置
