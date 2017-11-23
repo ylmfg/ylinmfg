@@ -19,4 +19,8 @@ class Index extends Controller
     public function single(){
         return view('single');
     }
+
+    public function layui(){
+        return view('test');
+    }
 }
