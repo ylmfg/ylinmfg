@@ -1,0 +1,26 @@
+<style>
+    #btn{
+        top:50%;z-index:10;position: fixed;right: -58px;
+
+    }
+    #btn img{
+        width: 50%;
+        height: 50%;
+    }
+</style>
+<div  id="btn">
+    <img src="__IMAGES__/to_pup.png">
+</div>
+<script>
+    document.getElementById('btn').onclick=function(){
+        timer=setInterval(function(){
+            var scrollTop=document.documentElement.scrollTop||document.body.scrollTop
+
+            var ispeed=Math.floor(-scrollTop/6);
+            if(scrollTop==0){
+                clearInterval(timer);
+            }
+            document.documentElement.scrollTop=document.body.scrollTop=scrollTop+ispeed;
+        },50)
+    }
+</script>
