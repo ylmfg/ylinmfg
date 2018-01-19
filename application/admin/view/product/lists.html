@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>意灵工坊-后台管理</title>
+    <link rel="stylesheet" href="__LAY__/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!--头部-->
+    {include file="comm/header" /}
+    <!--头部-->
+
+    <!--左侧-->
+    {include file="comm/left" /}
+    <!--左侧-->
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">产品列表</div>
+    </div>
+    <!--底部-->
+    {include file="comm/footer" /}
+    <!--底部-->
+
+</div>
+<script src="__LAY__/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>

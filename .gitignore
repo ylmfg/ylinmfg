@@ -2,3 +2,5 @@
 composer.lock
 *.log
 /application/config.php
+/runtime/
+/thinkphp/

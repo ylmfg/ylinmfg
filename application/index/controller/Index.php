@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use think\Db;
 
 class Index extends Controller
 {
@@ -9,18 +10,10 @@ class Index extends Controller
      */
     public function index()
     {
-        if(isset($_GET['jsonpcallback'])){
+        
+      return view('home');
 
-        }else{
-            return view('index');
-        }
     }
 
-    public function single(){
-        return view('single');
-    }
 
-    public function layui(){
-        return view('test');
-    }
 }

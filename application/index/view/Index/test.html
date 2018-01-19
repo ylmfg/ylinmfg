@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="__LAY__/css/layui.css">
     <script src="__LAY__/layui.js"></script>
     <script src="__JS__/jquery-1.10.2.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
     <style>
         .hed{
             padding: 0;
@@ -166,15 +167,46 @@
             </ul>
         </div>
     </div>
+    <div class="layui-row">
+        <div ng-app="myApp" ng-controller="myCtrl">
+        <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>昵称</th>
+            <th>电话</th>
+            <th>项目</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in res| orderBy : 'xin_name'">
+                <td>{{ x.xin_name }}</td>
+                <td>{{ x.xin_tel}}</td>
+                <td>{{ x.xin_item }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+        </div>
+    </div>
 </div>
 {include file="comm:footer" /}
 </body>
 <script>
-    layui.use('layer', function(){
-        var layer = layui.layer;
-
-        layer.msg('hello');
+    var url="{:url('getData')}";
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope,$http) {
+        $http.get(url).success(function(response) {
+            console.log(response);
+            $scope.res = response;
+        })
     });
+</script>
+<script>
     layui.use('carousel', function(){
         var carousel = layui.carousel;
         //建造实例

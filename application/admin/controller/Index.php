@@ -5,40 +5,57 @@
  * Date: 2017/7/25
  * Time: 9:42
  */
+
 namespace app\admin\controller;
+
+use think\Request;
+use think\Db;
+
 class Index extends Base
 {
-    public function _initialize()
-    {
-    }
-
     /**
-     * 后台首页
+     * 后台登录
      * @return \think\response\View
      */
-    public function admin()
+
+
+    public function login()
     {
-        return view('index');
+        if (Request::instance()->isPost()) {
+            $data = input('post.');
+            $res = Db::table('users')->where("name='{$data['user']}'")->find();
+            if ($res) {
+                $password = md5(md5($data['password'] . $res['salt']));
+                if ($res['password'] == $password) {
+                    $r = array(
+                        'status' => 1,
+                        'msg' => '登录成功',
+                        'user' => $res['name']
+                    );
+                    //存储session
+                    session('user_id', $res['id']);
+                    return $r;
+                } else {
+                    $r = array(
+                        'status' => 0,
+                        'msg' => '登录失败'
+                    );
+                    return $r;
+                }
+            }
+        } else {
+            return view('login');
+        }
+
     }
 
-    /***
-     * 登陆
-     * @return \think\response\View
-     */
     public function index()
     {
-        if (request()->isPost()) {
-            //获取表单提交数据
-            $data = input();
-            session('user_id', 1);
-            $this->success('登陆成功', url('admin/index/admin'),'',1);
-        } else {
-            if(!session('user_id')){
-                return view('login');
-            }else{
-                $this->success('你已登陆',url('admin/index/admin'),'',1);
-            }
-        }
+        $this->is_login();//是否登录
+        //获取菜单
+        $menu=$this->getMenu();
+        $this->assign('menu',$menu);
+        return view('index');
     }
 
     /**
@@ -47,7 +64,7 @@ class Index extends Base
     public function login_out()
     {
         session(null);
-        $this->success('退出成功', url('admin/index/index'),'',1);
+        $this->success('退出成功', url('admin/index/login'), '', 1);
     }
 
     /**管理设置
@@ -55,20 +72,22 @@ class Index extends Base
      */
     public function setting()
     {
-       return view();
+        return view();
     }
 
     /**
      * 会员管理
      */
-    public function user_info(){
+    public function user_info()
+    {
 
     }
 
     /**
      *会员等级
      */
-    public function user_rank(){
+    public function user_rank()
+    {
 
     }
 }

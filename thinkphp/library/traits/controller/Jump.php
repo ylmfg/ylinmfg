@@ -92,7 +92,6 @@ trait Jump
             'url'  => $url,
             'wait' => $wait,
         ];
-
         $type = $this->getResponseType();
         if ('html' == strtolower($type)) {
             $result = ViewTemplate::instance(Config::get('template'), Config::get('view_replace_str'))
