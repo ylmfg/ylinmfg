@@ -10,4 +10,8 @@ class User extends Controller
     {
       return view('index');
     }
+
+    public function detail(){
+      return view('detail');
+    }
 }
